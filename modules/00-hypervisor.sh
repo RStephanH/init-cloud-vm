@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-tools=( "qemu-system-x86" "qemu-kvm" "qemu-utils" "libvirt-clients" "libvirt-daemon-system" "virtinst")
+tools=( "qemu-system" "qemu-kvm" "qemu-utils" "libvirt-clients" "libvirt-daemon-system" "virtinst" "cloud-utils")
 
 for tool in "${tools[@]}"; do 
   echo "Installing $tool"
