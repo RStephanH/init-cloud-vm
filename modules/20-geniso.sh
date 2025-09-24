@@ -2,8 +2,9 @@
 
 # Interactive generator for cloud-init user-data and meta-data
 
+VM_UTILS_DIR="./vm_utils"
 OUTPUT_DIR="./cloud-init"
-mkdir -p "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR" 
 
 echo "=== Cloud-Init Config Generator ==="
 
@@ -82,6 +83,6 @@ echo "   genisoimage -output seed.iso -volid cidata -joliet -rock $OUTPUT_DIR/us
 
 read -rp "Would you like to generate the ISO for cloud-init (y/N):" confirm
 if [[ "$confirm" =~ ^[yY]$ ]]; then
-  geniso="genisoimage -output seed.iso -volid cidata -joliet -rock $OUTPUT_DIR/user-data $OUTPUT_DIR/meta-data"
+  geniso="genisoimage -output $VM_UTILS_DIR/seed.iso -volid cidata -joliet -rock $OUTPUT_DIR/user-data $OUTPUT_DIR/meta-data"
   eval $geniso
 fi
