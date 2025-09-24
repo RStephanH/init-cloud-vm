@@ -5,7 +5,7 @@ set -euo pipefail
 MODULE_DIR="./modules"
 
 #Default : run all in numeric order 
-modules_to_run= ($(ls "$MODULE_DIR" |sort ))
+modules_to_run=($(ls "$MODULE_DIR" |sort ))
 
 #Parse args 
 for arg  in "$@"; do 
@@ -21,14 +21,14 @@ for arg  in "$@"; do
       done
       ;;
     --dry-run)
-      DRY-RUN=1
+      DRY_RUN=1
       ;;
   esac
 done
 
-for module in "${module_to_run[@]}"; do 
+for module in "${modules_to_run[@]}"; do 
   echo ">> Running module : $module "
-  if [[ -n "${DRY-RUN: -}"]]; then
+  if [[ -n "${DRY_RUN:-}" ]]; then
     echo "[dry-run] $MODULE_DIR/$module"
   else
     bash "$MODULE_DIR/$module"
